@@ -1,0 +1,106 @@
+.mainItemContainer {
+    margin-top: 6rem;
+    display: flex;
+    position: relative;
+    padding: 0;
+    .arrow {
+        font-size: 10rem;
+        position: absolute;
+        left: -8rem;
+        top: -3rem;
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    .imgContainer {
+        width: 45%;
+        position: relative;
+
+        .lupa-item {
+            font-size: 3rem;
+            position: absolute;
+            z-index: 100;
+            display: flex;
+            width: 100%;
+            padding-right: 0.8rem;
+            justify-content: flex-end;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+    }
+
+    .itemInfo {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5rem;
+        width: 50%;
+
+        .cardType {
+           font-size: 5rem; 
+           font-weight: 300; 
+           color: grey;
+
+           span {
+            color: black; 
+            font-Weight: 400;
+           }
+        }
+
+        .cardText {
+            font-size: 2rem; 
+            font-Weight: 300; 
+            color: grey;
+
+            span {
+                color: black; 
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.smalPicsContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 2rem; 
+
+    img {
+        width: 150px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .mainItemContainer {
+        flex-direction: column;
+        
+        .imgContainer {
+            width: 90%;
+            margin: 0 auto;
+                .lupa-item {
+                    display: none;
+                    }
+        }
+
+        .itemInfo {
+            width: 90%;
+            margin: 0 auto;
+            .cardType {
+                font-size: 2rem;
+            }
+            button {
+                margin-right: 0 !important;
+            }
+            .smalPicsContainer {
+                margin-bottom: 2rem;
+                img {
+                    width: 100px;
+                }
+            }
+        }
+    }
+    
+}

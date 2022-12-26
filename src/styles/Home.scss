@@ -1,0 +1,115 @@
+.home__container {
+   display: flex;
+   .home__container__img_container1 {
+       position: relative;
+       width: 10%; 
+       .home__container__img_container1-block1 {
+           background-color: white;
+           position: relative;
+           padding-left: 4rem;
+           top: 13rem;
+           width:  40rem;
+           height: 30rem;
+           .home__container__img_container1-block1-text1 {
+            @import url('https://fonts.googleapis.com/css2?family=Murecho:wght@500&family=Noto+Serif+Display:ital@0;1&family=Yanone+Kaffeesatz:wght@500&display=swap');
+                font-family: 'Murecho', sans-serif;
+                font-size: 6rem;  
+                font-weight: 400;               
+           }
+
+           .home__container__img_container1-block1-text2 {
+               display: flex;
+               flex-direction: column;
+               position: absolute;
+               background-color: bisque;
+               right: 10rem;
+               padding: 3rem 5rem;
+               font-size: 2.2rem;
+               text-transform: uppercase;
+               text-align: center;
+               color: grey;
+               .btn {
+                   border-radius: 0;
+                   margin-top: 1rem;
+                   padding: 0 2rem;
+                   font-size: 5rem;
+                   &:hover {
+                       color: rgb(146, 76, 76);
+                       border: 1px solid bisque;
+                       background-color: bisque;
+                   }
+               }
+           }
+       }     
+   }
+   .home__container__img_container2 {
+       width: 90%;
+       overflow: hidden;
+   }     
+}
+
+.home__container2__block1 {
+    margin-top: 3rem;
+    border-top: 10px solid black;
+    border-bottom: 10px solid black;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 100;
+    color: grey;
+    a {
+        text-decoration: none;
+        color: grey;
+    }
+}
+
+.home__container3 {
+    display: flex;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+    
+    .home__container3__img {
+       overflow: hidden;
+       width: 90%;
+    }
+   
+    .home__container3__div {
+        width: 10%;
+        background: white;
+        display: flex;    
+        overflow: hidden;     
+        .home__container3__div-block1 {
+            background-color: white;
+           position: absolute;
+           top: 3rem;
+           left: 35rem;
+           width: 50rem;
+           height: 10rem;
+           
+           @import url('https://fonts.googleapis.com/css2?family=Murecho:wght@500&family=Noto+Serif+Display:ital@0;1&family=Yanone+Kaffeesatz:wght@500&display=swap');
+           padding-left: 3rem;
+           font-size: 6rem;
+           font-weight: 400;
+           font-family: 'Murecho', sans-serif;
+           span {
+               padding-left: 3rem;
+               color: bisque;
+               font-size: 3rem;
+               font-weight: 100;
+           }  
+           
+        }
+        .home__container3__div-block2 {
+            position: absolute;
+            background: bisque;
+            align-self: flex-end;
+            padding: 0 6rem 2rem;           
+            display: flex;
+            justify-content: center;
+            .btn {
+                font-size:4rem;
+                padding: 0 5rem;                
+            }      
+        } 
+    }
+}

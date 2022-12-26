@@ -1,0 +1,42 @@
+
+.hidden {
+    display: none !important;
+}
+
+.auth-inputs__container {
+
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 400px auto 0;
+    input {
+        padding: 5px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+        border-bottom: 1px solid black;
+       
+    }
+    input:focus-visible {
+        outline: none;
+    }
+    .wrong-alert {
+        padding-top: 15px;
+        color: red;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+}
+
+.list__container {
+    display: flex;
+    margin-top: 10%;
+    .list-table {
+        tr {
+            text-align: center;
+            vertical-align: middle;
+            
+        }
+    }
+}
