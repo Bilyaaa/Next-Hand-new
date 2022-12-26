@@ -34,8 +34,9 @@ export const Context = React.createContext<IContext>({items: [], filteredItems: 
 
 function App() {
 
-  const [items, setItems] = useState<IItem[]>([]);
-  const [filteredItems, setFilteredItems] = useState<IItem[]>([]);
+  const [items, setItems] = useState<Array<IItem>>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [filteredItems, setFilteredItems] = useState<Array<IItem>>([]);
 
   useEffect(() => {
     setItems([
