@@ -2,11 +2,11 @@
 import { Card, Container, Carousel, Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import Swal from 'sweetalert2'
-import ZoomImg from "../components/ZoomImg";
+import ZoomImg from "../components/ZoomImg.tsx";
 import $ from 'jquery'
 import '../styles/DevicePage.scss'
-import Header from "../components/Header";
-import {Context} from "../App";
+import Header from "../components/Header.tsx";
+import {Context} from "../App.tsx";
 import { useContext } from "react"
 
 function DevicePage() {

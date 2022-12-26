@@ -58,7 +58,7 @@ function Shop() {
                       )
               })
               : items.map((item) => {
-                  return (
+                return(
                       <Item key={item.id} item={item} />
                       )
               })}

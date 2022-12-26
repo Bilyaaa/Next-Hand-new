@@ -9,10 +9,10 @@ import Shop from "./pages/Shop";
 import Basket from "./pages/Basket";
 import Admin from "./pages/Admin";
 import Delivery from "./pages/Delivery";
-import DevicePage from "./pages/DevicePage";
+import DevicePage from "./pages/DevicePage"
 
 interface IContext {
-  items: [],
+  items: any,
   filteredItems: [],
   setFilteredItems?: any
 
@@ -44,63 +44,63 @@ function App() {
         type: "Skirt",
         brand: "Divided",
         price: 150,
-        imgSrc: "./images/shi1.jpg",
-        imgSrc2: "./images/shi2.jpg",
-        imgSrc3: "./images/shi3.jpg"
+        imgSrc: "/img/shi1.jpg",
+        imgSrc2: "/img/shi2.jpg",
+        imgSrc3: "/img/shi3.jpg"
       },
       {
         id: 2,
         type: "Dress",
         brand: "Atmosphere",
         price: 250,
-        imgSrc: "./images/blue1.jpg",
-        imgSrc2: "./images/blue2.jpg",
-        imgSrc3: "./images/blue3.jpg"
+        imgSrc: "/img/blue1.jpg",
+        imgSrc2: "/img/blue2.jpg",
+        imgSrc3: "/img/blue3.jpg"
       },
       {
         id: 3,
         type: "Overalls",
         brand: "Vero Moda",
         price: 300,
-        imgSrc: "./images/bod1.jpg",
-        imgSrc2: "./images/bod2.jpg",
-        imgSrc3: "./images/bod3.jpg"
+        imgSrc: "/img/bod1.jpg",
+        imgSrc2: "/img/bod2.jpg",
+        imgSrc3: "/img/bod3.jpg"
       },
       {
         id: 4,
         type: "Bodysuit",
         brand: "Zara",
         price: 450,
-        imgSrc: "./images/body1.jpg",
-        imgSrc2: "./images/body2.jpg",
-        imgSrc3: "./images/body3.jpg"
+        imgSrc: "/img/body1.jpg",
+        imgSrc2: "/img/body2.jpg",
+        imgSrc3: "/img/body3.jpg"
       },
       {
         id: 5,
         type: "Dress",
         brand: "Atmosphere",
         price: 50,
-        imgSrc: "./images/white1.jpg",
-        imgSrc2: "./images/white2.jpg",
-        imgSrc3: "./images/white3.jpg"
+        imgSrc: "/img/white1.jpg",
+        imgSrc2: "/img/white2.jpg",
+        imgSrc3: "/img/white3.jpg"
       },
       {
         id: 6,
         type: "Golf",
         brand: "Zara",
         price: 600,
-        imgSrc: "./images/red1.jpg",
-        imgSrc2: "./images/red2.jpg",
-        imgSrc3: "./images/red3.jpg"
+        imgSrc: "/img/red1.jpg",
+        imgSrc2: "/img/red2.jpg",
+        imgSrc3: "/img/red3.jpg"
       },
       {
         id: 7,
         type: "Overalls",
         brand: "BooHoo",
         price: 600,
-        imgSrc: "./images/col1.jpg",
-        imgSrc2: "./images/col2.jpg",
-        imgSrc3: "./images/col3.jpg"
+        imgSrc: "/img/col1.jpg",
+        imgSrc2: "/img/col2.jpg",
+        imgSrc3: "/img/col3.jpg"
       },
     ]);
   }, []);
@@ -115,7 +115,7 @@ function App() {
           <Route path="delivery" element={<Delivery />} />
           <Route path="basket" element={<Basket />} />
           <Route path="admin" element={<Admin />} />
-          {/* <Route path="device/:itemId" element={<DevicePage />} /> */}
+          <Route path="device/:itemId" element={<DevicePage />} />
         </Route>
       </Routes>
       </BrowserRouter>
