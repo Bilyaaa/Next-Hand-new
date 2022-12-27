@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
 import { useState, useEffect } from "react";
 import './App.css'
-import Header from "./components/Header.tsx";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Basket from "./pages/Basket";
@@ -13,7 +13,7 @@ import DevicePage from "./pages/DevicePage"
 
 interface IContext {
   items: any,
-  filteredItems: [],
+  filteredItems: any,
   setFilteredItems?: any
 
 }

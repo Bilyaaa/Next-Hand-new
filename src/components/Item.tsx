@@ -5,10 +5,16 @@ import { Card } from 'react-bootstrap'
 import '../styles/Item.scss'
 
 
-
-
-function Item({ item }) {
-
+function Item( 
+    item: { 
+      id: number 
+      type: string 
+      brand: string
+      imgSrc: string 
+      price: string 
+    } 
+  ) 
+  {
   return (
     <Link to={"/device/" + item.id} key={item.id} style={{ textDecoration: 'none', color: 'grey' }}>
       <Card key={item.id}>

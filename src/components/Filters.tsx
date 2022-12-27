@@ -2,36 +2,47 @@
 import React from 'react';
 import { Accordion, ListGroup } from 'react-bootstrap'
 import { useContext, useState } from 'react'
-import { Context } from '../App.tsx';
+import { Context } from '../App';
 
 
-interface Itype {
+interface Itype  {
   type: string
 }
 
-interface IContext {
-  items: any,
-  filteredItems: any,
-  setFilteredItems: an
+interface IBrand {
+  brand: string
 }
 
-function Filters ({items}) {
-  const [selectType, setSelectType] = useState<Itype>([]);
-  const [selectBrand, setSelectBrand] = useState([]);
-  let {filteredItems, setFilteredItems} = useContext<IContext>(Context)
+interface IItem  {
+  id: number,
+  type: string,
+  brand: string,
+  price: number,
+  imgSrc: any,
+  imgSrc2: any,
+  imgSrc3: any
+}
+
+
+
+function Filters (items: Array<IItem>) {
+  const [selectType, setSelectType] = useState<Array<Itype>>([]);
+  const [selectBrand, setSelectBrand] = useState<Array<IBrand>>([]);
+  let {filteredItems, setFilteredItems} = useContext(Context)
 
   function brandSelect() {
-    let selectBrand = items.reduce((acc, item) => {
+    let selectBrand = items.reduce((acc: any, item: IItem) => {
       if (!acc.includes(item.brand)) {
         acc.push(item.brand);
       }
       return acc;
     }, []);
     setSelectBrand(selectBrand);
+    console.log(selectBrand)
   }
 
   function typeSelect() {
-    let selectType = items.reduce((acc, item) => {
+    let selectType = items.reduce((acc: any, item: IItem) => {
       if (!acc.includes(item.type)) {
         acc.push(item.type);
       }
@@ -41,8 +52,8 @@ function Filters ({items}) {
   }
 
   
-  function filteredBrand(value) {
-   filteredItems = items.filter((item) => {
+  function filteredBrand(value: string) {
+   filteredItems = items.filter((item: IItem) => {
       if (item.brand === value || item.type === value) { return item } else return null
     });
     setFilteredItems(filteredItems);
@@ -82,15 +93,15 @@ function Filters ({items}) {
                         borderLeft: "none",
                         borderRight: "none",
                       }}
-                      key={item}
+                      key={item.brand}
                       action
                       variant="light"
                       onClick={(e) => {
-                        let value = e.currentTarget.textContent;
+                        let value: any = e.currentTarget.textContent;
                         filteredBrand(value);
                       }}
                     >
-                      {item}
+                      {item.brand}
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
@@ -121,15 +132,15 @@ function Filters ({items}) {
                         borderLeft: "none",
                         borderRight: "none",
                       }}
-                      key={item}
+                      key={item.type}
                       action
                       variant="light"
                       onClick={(e) => {
-                        let value = e.currentTarget.textContent;
+                        let value: any = e.currentTarget.textContent;
                         filteredBrand(value);
                       }}
                     >
-                      {item}
+                      {item.type}
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
