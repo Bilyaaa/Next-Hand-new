@@ -3,7 +3,13 @@ import React from 'react'
 import { Carousel } from 'react-bootstrap'
 import  $  from 'jquery'
 
-function ZoomImg ({i}) {
+function ZoomImg (
+  i: {
+    imgSrc: string
+    imgSrc2: string
+    imgSrc3: string
+  }
+) {
     return(
        <div className='drop-item' style={{position: 'absolute', display:'none'}}>
            <div 

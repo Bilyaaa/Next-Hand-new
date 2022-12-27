@@ -18,7 +18,7 @@ interface IContext {
 
 }
 
-interface IItem {
+export interface IItem {
   id: number,
   type: string,
   brand: string,

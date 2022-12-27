@@ -4,7 +4,7 @@ import React from "react";
 import { useContext } from "react";
 import  Item from "../components/Item.tsx";
 import  Filters from '../components/Filters.tsx';
-import { Context } from '../App.tsx'
+import { Context } from '../App'
 import '../styles/Shop.scss'
 import $ from 'jquery'
 
@@ -13,7 +13,9 @@ import $ from 'jquery'
 
 
 function Shop() {
-  const {items} = useContext(Context);
+  
+  const context = useContext(Context)
+  const items = context.items
   const{filteredItems, setFilteredItems} = useContext(Context);
 
   function showFilters() {
@@ -36,10 +38,6 @@ function Shop() {
     }
   })
   
-
-  
-
-
   return (
     <Context.Provider value={{filteredItems, setFilteredItems}}>
     <Container className="main-container">
@@ -51,7 +49,7 @@ function Shop() {
         </div>
       </div>
       <div className="content-grid">
-            {filteredItems.length
+            {filteredItems.length 
               ? filteredItems.map((item) => {
                 return(
                       <Item key={item.id} item={item} />

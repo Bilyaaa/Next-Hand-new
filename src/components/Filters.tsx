@@ -18,14 +18,14 @@ interface IItem  {
   type: string,
   brand: string,
   price: number,
-  imgSrc: any,
-  imgSrc2: any,
-  imgSrc3: any
+  imgSrc: string,
+  imgSrc2: string,
+  imgSrc3: string
 }
 
 
 
-function Filters (items: Array<IItem>) {
+function Filters (items: []) {
   const [selectType, setSelectType] = useState<Array<Itype>>([]);
   const [selectBrand, setSelectBrand] = useState<Array<IBrand>>([]);
   let {filteredItems, setFilteredItems} = useContext(Context)
