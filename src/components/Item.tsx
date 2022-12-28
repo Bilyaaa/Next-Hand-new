@@ -3,22 +3,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import '../styles/Item.scss'
+import { IItem } from '../App'
 
 
-
-function Item(props: {
-  item: {
-    id: number,
-    type: string,
-    brand: string,
-    price: number,
-    imgSrc: string
-  }
-}) 
-
-{
+function Item(props: {item: IItem}) {
   let item = props.item
-
   return (
     <Link to={"/device/" + item.id} key={item.id} style={{ textDecoration: 'none', color: 'grey' }}>
       <Card key={item.id}>

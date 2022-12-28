@@ -2,8 +2,8 @@
 import { Container } from "react-bootstrap";
 import React from "react";
 import { useContext } from "react";
-import  Item from "../components/Item.tsx";
-import  Filters from '../components/Filters.tsx';
+import  Item from "../components/Item";
+import  Filters from '../components/Filters';
 import { Context } from '../App'
 import '../styles/Shop.scss'
 import $ from 'jquery'
@@ -45,17 +45,17 @@ function Shop() {
         <div className="remove-hidden" onClick={showFilters}>Filters</div>
         <div className='close-button hidden' onClick={showFilters}>Close</div>
         <div className="filter">
-          <Filters items={items}></Filters>
+          <Filters items = {items}></Filters>
         </div>
       </div>
       <div className="content-grid">
             {filteredItems.length 
-              ? filteredItems.map((item) => {
+              ? filteredItems.map((item: any) => {
                 return(
                       <Item key={item.id} item={item} />
                       )
               })
-              : items.map((item) => {
+              : items.map((item: any) => {
                 return(
                       <Item key={item.id} item={item} />
                       )

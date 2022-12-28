@@ -12,8 +12,8 @@ import Delivery from "./pages/Delivery";
 import DevicePage from "./pages/DevicePage"
 
 interface IContext {
-  items: any,
-  filteredItems: any,
+  items?: any,
+  filteredItems?: any,
   setFilteredItems?: any
 
 }
