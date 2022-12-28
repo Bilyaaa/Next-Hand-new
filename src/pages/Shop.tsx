@@ -1,40 +1,24 @@
 
 import { Container } from "react-bootstrap";
-import React from "react";
+import React, { useEffect } from "react";
 import  Item from "../components/Item";
-// import  Filters from '../components/Filters';
+import  Filters from '../components/Filters';
 import '../styles/Shop.scss'
 import $ from 'jquery'
 import {  useSelector } from "react-redux"
-import { IItem } from "../models/models"
+import { IItem, IArr } from "../models/models"
 
 
 function Shop() {
 
 
-  const items: IItem[] = useSelector<Array<IItem>>(state => state)
+  
+  let items: IArr = useSelector(state => state) as IArr
+  
   console.log(items)
 
+  let myItems: IItem[] = items.items
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  let filteredItems = items
-
-
-
-  
-  
   function showFilters() {
     if ($('.close-button').hasClass('hidden')) {
     $('.remove-hidden').css('display', 'none')
@@ -62,20 +46,13 @@ function Shop() {
         <div className="remove-hidden" onClick={showFilters}>Filters</div>
         <div className='close-button hidden' onClick={showFilters}>Close</div>
         <div className="filter">
-          {/* <Filters items = {items}></Filters> */}
+          <Filters></Filters>
         </div>
       </div>
       <div className="content-grid">
-            {filteredItems.length 
-              ? filteredItems.map((item) => {
-                return(
-                      <Item key={item.id} item={item} />
-                      )
-              })
-              : items.map((item: any) => {
-                return(
-                      <Item key={item.id} item={item} />
-                      )
+            {
+            myItems.map((item: IItem) => {
+                return(<Item key={item.id} item={item} />)
               })}
       </div>
     </Container>

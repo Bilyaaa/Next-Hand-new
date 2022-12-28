@@ -2,62 +2,65 @@
 import React from 'react';
 import { Accordion, ListGroup } from 'react-bootstrap'
 import { useState } from 'react'
-import { IItem, IBrand, Itype } from '../models/models'
+import { IItem, IBrand, Itype, IArr } from '../models/models'
 import { useDispatch, useSelector } from "react-redux"
+import { type } from 'os';
 
 
 
 function Filters () {
 
 
-
-  // const dispatch = useDispatch() 
-//   let items  = useSelector<Array<[]>>(state => state)
+  const dispatch = useDispatch()
+  let items: IArr = useSelector(state => state) as IArr
   
 
-// console.log(items)
+  let myItems: IItem[] = items.items
 
-  // const [selectType, setSelectType] = useState<Array<Itype>>([]);
-  // const [brands, setBrands] = useState<Array<string>>([]);
+  let [filteredItems, setFilteredItems] = useState(items)
   
-  // function brandsMap() {
-  //   let brands: string[] = items.reduce((acc: string[], item: IBrand) => {
-  //     if (!acc.includes(item.brand)) {
-  //       acc.push(item.brand); 
-  //     }
-  //     return acc;
-  //   }, []);
-  //   setBrands(brands);  
-  // }
 
-  // function filteredBrand(value: string) {
-  //   console.log(value)
-  //   filteredItems = items.filter((item: IItem) => {
-  //      if (item.brand === value || item.type === value) {
-  //        return item 
-  //       } 
-  //       else return null
-  //    });
-  //    setFilteredItems(filteredItems);
-  //    console.log(filteredItems) 
-  //  }
+
+
+  const [selectType, setSelectType] = useState<Array<Itype>>([]);
+  const [brands, setBrands] = useState<Array<string>>([]);
+  
+  function brandsMap() {
+    let brands: string[] = myItems.reduce((acc: string[], item: IBrand) => {
+      if (!acc.includes(item.brand)) {
+        acc.push(item.brand); 
+      }
+      return acc;
+    }, []);
+    setBrands(brands);  
+  }
+
+  function filteredBrand(value: string) {
+    let items = myItems.filter((item: IItem) => {
+       if (item.brand === value || item.type === value) {
+         return item 
+        } 
+        else return null
+     })
+     console.log(items)
+     dispatch({type: 'RENDER', payload: items})
+   }
  
-  //  function filteredAllBrand() {
-  //    filteredItems = items.map((item) => {
-  //      return item;
-  //    });
-  //    setFilteredItems(filteredItems);
-  //  }
+   function filteredAllBrand() {
+     myItems = myItems.map((item) => {
+       return item;
+     });
+   }
 
-  // function typeSelect() {
-  //   let selectType = items.reduce((acc: any, item: IItem) => {
-  //     if (!acc.includes(item.type)) {
-  //       acc.push(item.type);
-  //     }
-  //     return acc;
-  //   }, []);
-  //   setSelectType(selectType);
-  // }
+  function typeSelect() {
+    let selectType = myItems.reduce((acc: any, item: IItem) => {
+      if (!acc.includes(item.type)) {
+        acc.push(item.type);
+      }
+      return acc;
+    }, []);
+    setSelectType(selectType);
+  }
 
   
  
@@ -65,7 +68,7 @@ function Filters () {
     return (
         
         <div>
-          {/* <Accordion >
+          <Accordion >
             <Accordion.Item eventKey="1">
               <Accordion.Header onClick={brandsMap}>BRANDS</Accordion.Header>
               <Accordion.Body style={{ padding: "0", zIndex:'95' }}>
@@ -146,11 +149,11 @@ function Filters () {
               <Accordion.Header>KIDS CLOTHING</Accordion.Header>
               <Accordion.Body style={{ padding: "0" }}></Accordion.Body>
             </Accordion.Item>
-          </Accordion> */}
+          </Accordion>
         </div>
    
     )
 }
 
 
-// export default Filters
+export default Filters

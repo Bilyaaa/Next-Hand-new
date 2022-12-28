@@ -7,7 +7,11 @@ export interface IItem {
     price: number,
     imgSrc: any,
     imgSrc2: any,
-    imgSrc3: any
+    imgSrc3: any,
+  }
+
+  export interface IArr {
+    items: IItem[]
   }
 
 export interface IContext {

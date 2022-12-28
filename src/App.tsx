@@ -10,14 +10,14 @@ import Basket from "./pages/Basket";
 import Admin from "./pages/Admin";
 import Delivery from "./pages/Delivery";
 import DevicePage from "./pages/DevicePage"
-import { IItem, IContext } from './models/models'
+import { IItem, IContext, IArr } from './models/models'
 import { Provider, useSelector } from 'react-redux';
 import { createStore } from "redux";
 
 
 
-const items: IItem[] = 
-   [
+const defaultState: IArr = {
+  items: [
     {
       id: 1,
       type: "Skirt",
@@ -81,13 +81,17 @@ const items: IItem[] =
       imgSrc2: "/img/col2.jpg",
       imgSrc3: "/img/col3.jpg"
     }
-   ]
+  ]
+
+}
 
 
-const reducer = (state = items, action: { type: string, payload: IItem[]}) => {
+
+
+const reducer = (state = defaultState, action: { type: string, payload: IItem[]}) => {
   switch (action.type) {
-    // case 'RENDER' : 
-    //   return {...state, state: action.payload}
+    case 'RENDER' : 
+      return {...state, items : action.payload}
     default:
       return state
   }
@@ -97,7 +101,6 @@ const store = createStore(reducer)
 
 
 function App() {
-
   return (
     <Provider store={store}>
       <BrowserRouter>
