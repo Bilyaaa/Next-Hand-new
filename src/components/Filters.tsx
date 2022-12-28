@@ -1,78 +1,73 @@
 
 import React from 'react';
 import { Accordion, ListGroup } from 'react-bootstrap'
-import { useContext, useState } from 'react'
-import { Context } from '../App';
-
-
-interface Itype  {
-  type: string
-}
-
-interface IBrand {
-  brand: string
-}
-
-interface IItem  {
-  id: number,
-  type: string,
-  brand: string,
-  price: number,
-  imgSrc: string,
-  imgSrc2: string,
-  imgSrc3: string
-}
+import { useState } from 'react'
+import { IItem, IBrand, Itype } from '../models/models'
+import { useDispatch, useSelector } from "react-redux"
 
 
 
-function Filters (items: []) {
-  const [selectType, setSelectType] = useState<Array<Itype>>([]);
-  const [selectBrand, setSelectBrand] = useState<Array<IBrand>>([]);
-  let {filteredItems, setFilteredItems} = useContext(Context)
+function Filters () {
 
-  function brandSelect() {
-    let selectBrand = items.reduce((acc: any, item: IItem) => {
-      if (!acc.includes(item.brand)) {
-        acc.push(item.brand);
-      }
-      return acc;
-    }, []);
-    setSelectBrand(selectBrand);
-    console.log(selectBrand)
-  }
 
-  function typeSelect() {
-    let selectType = items.reduce((acc: any, item: IItem) => {
-      if (!acc.includes(item.type)) {
-        acc.push(item.type);
-      }
-      return acc;
-    }, []);
-    setSelectType(selectType);
-  }
+
+  // const dispatch = useDispatch() 
+//   let items  = useSelector<Array<[]>>(state => state)
+  
+
+// console.log(items)
+
+  // const [selectType, setSelectType] = useState<Array<Itype>>([]);
+  // const [brands, setBrands] = useState<Array<string>>([]);
+  
+  // function brandsMap() {
+  //   let brands: string[] = items.reduce((acc: string[], item: IBrand) => {
+  //     if (!acc.includes(item.brand)) {
+  //       acc.push(item.brand); 
+  //     }
+  //     return acc;
+  //   }, []);
+  //   setBrands(brands);  
+  // }
+
+  // function filteredBrand(value: string) {
+  //   console.log(value)
+  //   filteredItems = items.filter((item: IItem) => {
+  //      if (item.brand === value || item.type === value) {
+  //        return item 
+  //       } 
+  //       else return null
+  //    });
+  //    setFilteredItems(filteredItems);
+  //    console.log(filteredItems) 
+  //  }
+ 
+  //  function filteredAllBrand() {
+  //    filteredItems = items.map((item) => {
+  //      return item;
+  //    });
+  //    setFilteredItems(filteredItems);
+  //  }
+
+  // function typeSelect() {
+  //   let selectType = items.reduce((acc: any, item: IItem) => {
+  //     if (!acc.includes(item.type)) {
+  //       acc.push(item.type);
+  //     }
+  //     return acc;
+  //   }, []);
+  //   setSelectType(selectType);
+  // }
 
   
-  function filteredBrand(value: string) {
-   filteredItems = items.filter((item: IItem) => {
-      if (item.brand === value || item.type === value) { return item } else return null
-    });
-    setFilteredItems(filteredItems);
-   
-  }
-
-  function filteredAllBrand() {
-    filteredItems = items.map((item) => {
-      return item;
-    });
-    setFilteredItems(filteredItems);
-  }
+ 
 
     return (
         
         <div>
-          <Accordion >
+          {/* <Accordion >
             <Accordion.Item eventKey="1">
-              <Accordion.Header onClick={brandSelect}>BRANDS</Accordion.Header>
+              <Accordion.Header onClick={brandsMap}>BRANDS</Accordion.Header>
               <Accordion.Body style={{ padding: "0", zIndex:'95' }}>
                 <ListGroup style={{ borderRadius: 0 }}>
                   <ListGroup.Item
@@ -86,14 +81,13 @@ function Filters (items: []) {
                   >
                     ALL
                   </ListGroup.Item>
-
-                  {selectBrand.map((item) => (
+                  {brands.map((brand) => (
                     <ListGroup.Item
                       style={{
                         borderLeft: "none",
                         borderRight: "none",
                       }}
-                      key={item.brand}
+                      key={brand}
                       action
                       variant="light"
                       onClick={(e) => {
@@ -101,7 +95,7 @@ function Filters (items: []) {
                         filteredBrand(value);
                       }}
                     >
-                      {item.brand}
+                      {brand}
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
@@ -152,10 +146,11 @@ function Filters (items: []) {
               <Accordion.Header>KIDS CLOTHING</Accordion.Header>
               <Accordion.Body style={{ padding: "0" }}></Accordion.Body>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
         </div>
    
     )
 }
 
-export default Filters
+
+// export default Filters

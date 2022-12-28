@@ -1,15 +1,16 @@
 
 import { Button, Container, Table } from 'react-bootstrap';
 import '../styles/Admin.scss'
-import { Context } from '../App.tsx'
-import { useContext } from 'react';
+
+
 
 
 
 
 function Admin() {
 
-    let {items} = useContext(Context)
+
+
 
     const admin = {
         login: '123',
@@ -64,7 +65,7 @@ function Admin() {
             </div>
             <Container className='list__container hidden'>
         <Table className='list-table'>
-          {items.map((item) => (
+          {/* {items.map((item) => (
             <tbody key={item.id}>
               <tr
                 key={item.id}>
@@ -84,7 +85,7 @@ function Admin() {
                 </td>
               </tr>
             </tbody>
-          ))}
+          ))} */}
         </Table>
       </Container>
         </div>

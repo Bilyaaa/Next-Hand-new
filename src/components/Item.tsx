@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import '../styles/Item.scss'
-import { IItem } from '../App'
+import { IItem } from '../models/models'
 
 
 function Item(props: {item: IItem}) {
