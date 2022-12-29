@@ -2,14 +2,9 @@
 import React from 'react'
 import { Carousel } from 'react-bootstrap'
 import  $  from 'jquery'
+import { IItem } from '../models/models'
 
-function ZoomImg (
-  i: {
-    imgSrc: string
-    imgSrc2: string
-    imgSrc3: string
-  }
-) {
+function ZoomImg(props: {item: IItem}) {
     return(
        <div className='drop-item' style={{position: 'absolute', display:'none'}}>
            <div 
@@ -28,13 +23,13 @@ function ZoomImg (
        }}
        interval={10000}  >
           <Carousel.Item>
-            <img className="d-block w-100" src={i.imgSrc} alt="First slide" />
+            <img className="d-block w-100" src={props.item.imgSrc} alt="First slide" />
           </Carousel.Item>
           <Carousel.Item>
-            <img className="d-block w-100" src={i.imgSrc2} alt="Second slide" />
+            <img className="d-block w-100" src={props.item.imgSrc2} alt="Second slide" />
           </Carousel.Item>
           <Carousel.Item>
-            <img className="d-block w-100" src={i.imgSrc3} alt="Third slide" />
+            <img className="d-block w-100" src={props.item.imgSrc3} alt="Third slide" />
           </Carousel.Item>
         </Carousel>
         </div>

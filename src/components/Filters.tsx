@@ -1,29 +1,17 @@
 
-import React from 'react';
 import { Accordion, ListGroup } from 'react-bootstrap'
-import { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { IItem, IBrand, Itype, IArr } from '../models/models'
 import { useDispatch, useSelector } from "react-redux"
-import { type } from 'os';
-
-
+import { Context } from '../App';
 
 function Filters () {
-
-
   const dispatch = useDispatch()
-  let items: IArr = useSelector(state => state) as IArr
-  
-
-  let myItems: IItem[] = items.items
-
-  let [filteredItems, setFilteredItems] = useState(items)
-  
-
-
-
-  const [selectType, setSelectType] = useState<Array<Itype>>([]);
+  const items: IArr = useSelector(state => state) as IArr
+  const myItems: IItem[] = items.items
+  const defaultList = useContext(Context)
   const [brands, setBrands] = useState<Array<string>>([]);
+  const [types, setTypes] = useState<Array<string>>([]);
   
   function brandsMap() {
     let brands: string[] = myItems.reduce((acc: string[], item: IBrand) => {
@@ -35,31 +23,30 @@ function Filters () {
     setBrands(brands);  
   }
 
-  function filteredBrand(value: string) {
-    let items = myItems.filter((item: IItem) => {
+  function filterByBrandOrType(value: string) {
+    let items = defaultList.filter((item: IItem) => {
        if (item.brand === value || item.type === value) {
          return item 
         } 
         else return null
      })
-     console.log(items)
      dispatch({type: 'RENDER', payload: items})
+
    }
  
    function filteredAllBrand() {
-     myItems = myItems.map((item) => {
-       return item;
-     });
+    let items = defaultList
+    dispatch({type: 'RENDER', payload: items})
    }
 
-  function typeSelect() {
-    let selectType = myItems.reduce((acc: any, item: IItem) => {
+  function typesMap() {
+    let types: string[] = myItems.reduce((acc: any, item: Itype) => {
       if (!acc.includes(item.type)) {
         acc.push(item.type);
       }
       return acc;
     }, []);
-    setSelectType(selectType);
+    setTypes(types)
   }
 
   
@@ -94,8 +81,8 @@ function Filters () {
                       action
                       variant="light"
                       onClick={(e) => {
-                        let value: any = e.currentTarget.textContent;
-                        filteredBrand(value);
+                        let value: string = e.currentTarget.textContent as string;
+                        filterByBrandOrType(value);
                       }}
                     >
                       {brand}
@@ -107,8 +94,8 @@ function Filters () {
           </Accordion>
           <Accordion>
             <Accordion.Item eventKey="2">
-              <Accordion.Header onClick={typeSelect}>
-                WOMEN CLOTHING
+              <Accordion.Header onClick={typesMap}>
+                TYPES
               </Accordion.Header>
               <Accordion.Body style={{ padding: "0" }}>
                 <ListGroup style={{ borderRadius: 0 }}>
@@ -123,33 +110,33 @@ function Filters () {
                   >
                     ALL
                   </ListGroup.Item>
-                  {selectType.map((item) => (
+                  {types.map((type) => (
                     <ListGroup.Item
                       style={{
                         borderLeft: "none",
                         borderRight: "none",
                       }}
-                      key={item.type}
+                      key={type}
                       action
                       variant="light"
                       onClick={(e) => {
                         let value: any = e.currentTarget.textContent;
-                        filteredBrand(value);
+                        filterByBrandOrType(value);
                       }}
                     >
-                      {item.type}
+                      {type}
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-          <Accordion>
+          {/* <Accordion>
             <Accordion.Item eventKey="3">
               <Accordion.Header>KIDS CLOTHING</Accordion.Header>
               <Accordion.Body style={{ padding: "0" }}></Accordion.Body>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
         </div>
    
     )

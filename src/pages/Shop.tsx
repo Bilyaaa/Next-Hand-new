@@ -1,6 +1,6 @@
 
 import { Container } from "react-bootstrap";
-import React, { useEffect } from "react";
+import React from "react";
 import  Item from "../components/Item";
 import  Filters from '../components/Filters';
 import '../styles/Shop.scss'
@@ -8,15 +8,8 @@ import $ from 'jquery'
 import {  useSelector } from "react-redux"
 import { IItem, IArr } from "../models/models"
 
-
-function Shop() {
-
-
-  
+function Shop() { 
   let items: IArr = useSelector(state => state) as IArr
-  
-  console.log(items)
-
   let myItems: IItem[] = items.items
 
   function showFilters() {
@@ -30,7 +23,6 @@ function Shop() {
       $('.remove-hidden').css('display', 'block')
       $('.close-button').addClass('hidden')
     }
-    
   }
 
   $(document).ready(function widthCheck() {
@@ -40,7 +32,6 @@ function Shop() {
   })
   
   return (
-   
     <Container className="main-container">
       <div className="filterContainer">
         <div className="remove-hidden" onClick={showFilters}>Filters</div>
@@ -50,14 +41,13 @@ function Shop() {
         </div>
       </div>
       <div className="content-grid">
-            {
-            myItems.map((item: IItem) => {
-                return(<Item key={item.id} item={item} />)
-              })}
+        {myItems.map((item: IItem) => {
+          return(<Item key={item.id} item={item} />)
+          })
+        }
       </div>
     </Container>
-
-  );
+  )
 }
 
 export default Shop;

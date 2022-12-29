@@ -66,11 +66,9 @@ function Header() {
               </Link>
               </div>
             </Nav>
-          
         </Container>
       </Navbar>
     </Container>
-
     <Outlet />
     </>
   );
