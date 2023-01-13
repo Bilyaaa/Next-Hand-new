@@ -1,9 +1,7 @@
+import React from 'react'
 import '../styles/Home.scss'
 import '../styles/Media.scss'
 import { Container, Button } from "react-bootstrap";
-import city from '../images/city.jpg';
-import Girl from '../images/Girl.jpeg'
-import Wclothing from '../images/Wclothing.jpg'
 import { Link } from 'react-router-dom';
 
 
@@ -29,7 +27,7 @@ function HomeSec1 () {
       </div>
     </div>
     <div className='home__container__img_container2'>
-      <img src={city} alt='city'/>
+      <img src='/img/city.jpg' alt='city'/>
     </div>
   </Container>
   )
@@ -45,7 +43,7 @@ function HomeSec2 () {
   )
 }
 
-function HomeSec3 (props) {
+function HomeSec3 (props: { src: string; alt: string; label: string }) {
 
   return (
     <Container className='home__container3'>
@@ -78,9 +76,9 @@ function Home() {
   <>  
  <HomeSec1/>
  <HomeSec2/>
- <HomeSec3 label='WEMEN' src={Wclothing} alt='wclothing'/>
+ <HomeSec3 label='WEMEN' src='/img/Wclothing.jpg' alt='wclothing'/>
  <HomeSec2/>
- <HomeSec3 label='KIDS' src={Girl} alt='kids'/>
+ <HomeSec3 label='KIDS' src='/img/Girl.jpeg' alt='kids'/>
  </>   
   
     

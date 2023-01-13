@@ -4,5 +4,49 @@
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
-    justify-content: center
+    justify-content: center;
+    .main-wrapper {
+        padding:2rem 6rem 4rem;
+        .title {
+            display: flex; 
+            justify-content: center;  
+            color: white;
+        }
+        .description {
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            color: white;
+            font-size: 3rem;
+            padding-top: 3rem;
+            .description-main {
+                font-size: 1.85rem;
+                margin-bottom: 2rem;                
+            }
+            .description-wrapper {
+                font-size: 2rem;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                .description-delivery-container {
+                    padding: 2rem .5rem;
+                    ul {
+                        font-size: 1.5rem;
+                        li {
+                            margin-bottom: 1rem; 
+                            color: black;
+                        }
+                    }
+                }
+                .description-map-container {
+                    padding: .5rem 1rem;
+                }
+            }
+        }
+        .description-footer {
+            font-size:1.2rem;
+
+        }
+    }
 }

@@ -1,0 +1,36 @@
+.main-container {
+    display: flex;
+    margin-top: 10%;
+    .items-table {
+        width: 70%; 
+        border: none; 
+        border-collapse: collapse; 
+        tr {
+            text-align: center;
+            vertical-align: middle;
+            img {
+                width: 100px;
+            }
+        }
+    }
+    .summ-container {
+        font-size: 2rem;
+        margin: 2rem;
+        color: grey;
+        .summ {
+            font-size: 5rem;
+            color: black;
+        }
+        .buy-btn {
+            margin: 2rem;
+            font-size: 3rem;
+        }
+    }
+}
+.empty-basket {
+    margin-top: 6rem;
+    text-align: center;
+    div {
+        font-size: 5rem;
+    }
+}
