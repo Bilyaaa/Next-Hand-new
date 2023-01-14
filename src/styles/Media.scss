@@ -22,10 +22,6 @@
         }
     }
 
-    .main-container .filterContainer {
-        width: 1% !important;
-    }
-
     .text-container {
         font-size: 1.2rem !important;
         .div-price {
@@ -37,6 +33,14 @@
 @media (max-width: 767px) {
     .home__container .home__container__img_container1 .home__container__img_container1-block1 {
         width: 25rem;
+    }
+
+    .main-container .filterContainer {
+        width: 10% !important;
+    }
+
+    .text-container {
+        flex-direction: column;
     }
 
     .nav-small-opened {

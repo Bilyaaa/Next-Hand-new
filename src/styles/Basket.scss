@@ -34,3 +34,50 @@
         font-size: 5rem;
     }
 }
+
+@media(max-width: 1200px) { 
+    .main-container {
+        .summ-container {
+            text-align: center;
+            font-size: 1rem;
+            .summ {
+                font-size: 3rem;
+            }
+        }        
+    }
+}
+
+@media(max-width: 767px) {
+    .main-container {
+        width: 100%;
+        margin: 20% auto;
+        .summ-container {
+            text-align: center;
+            font-size: 1rem;
+            .summ {
+                font-size: 2rem;
+            }
+            .buy-btn {
+                font-size: 2rem;
+            }
+        }    
+        .items-table tr img {
+            width: 50px;
+        }
+        td {
+            padding: 0 5px;
+        }
+    }
+} 
+
+@media(max-width: 624px) {
+    .main-container {
+        flex-direction: column;
+        .items-table {
+            width: 100%;
+            td {
+                padding: 10px;
+            }
+        }
+    }
+}

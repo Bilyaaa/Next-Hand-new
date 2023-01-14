@@ -18,10 +18,11 @@ function Admin() {
   let userLogin: string 
   let userPassword: string
 
-  let inputsContainer: HTMLDivElement | null = document.querySelector('.auth-inputs__container')
-  let listContainer : HTMLDivElement | null = document.querySelector('.list__container')
+  const inputsContainer: HTMLDivElement = document.querySelector('.auth-inputs__container') as HTMLDivElement
+  const listContainer : HTMLDivElement = document.querySelector('.list__container') as HTMLDivElement
+
   
-  
+ 
   const defaultList = useContext(Context)
 
   function getLoginAndPassword (event: React.ChangeEvent<HTMLInputElement>) {
@@ -37,15 +38,15 @@ function Admin() {
 
 
   function submit () {
-    if (userLogin === admin.login && userPassword === admin.password) {
-      if(inputsContainer && listContainer) {
+    if (userLogin === admin.login && userPassword === admin.password) {   
+      
       inputsContainer.classList.add('hidden')
-      listContainer.classList.remove('hidden')
-      }
+      listContainer.classList.remove('hidden')      
     }
     else {
       alert()
     }
+    
   }
 
   function removeAlert () {
