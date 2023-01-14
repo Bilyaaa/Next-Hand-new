@@ -1,8 +1,11 @@
+
+
 import { current } from "@reduxjs/toolkit";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
-import Header from "../components/Header.tsx";
+import Header from "../components/Header";
+import { IItem } from "../models/models";
 import '../styles/Basket.scss'
 
 
@@ -10,7 +13,7 @@ function Basket() {
   
   
 
-  const [basket, setBasket] = useState(JSON.parse(localStorage.getItem("basket")));
+  const [basket, setBasket] = useState(JSON.parse(localStorage.getItem("basket") as string))
   const Toast = Swal.mixin({
     toast: true,
     position: "center",
@@ -23,14 +26,13 @@ function Basket() {
     },
   });
 
-  function deleteFromBasket(item) {
+  function deleteFromBasket(item: IItem) {
     let myId = item.id;
-    let filtered = basket.filter((item) => {
+    let filtered = basket.filter((item: IItem) => {
       return item.id !== myId;
     });
     localStorage.clear();
     localStorage.setItem("basket", JSON.stringify(filtered));
-    console.log(JSON.parse(localStorage.getItem("basket")));
     setBasket(filtered);
     Toast.fire({
       icon: "success",
@@ -39,7 +41,7 @@ function Basket() {
   }
 
   function Summ() {
-    const sum = basket.reduce((acc, item) => {
+    const sum = basket.reduce((acc: number, item: IItem) => {
       return acc + item.price;
     }, 0);
 
@@ -51,13 +53,13 @@ function Basket() {
       <Header/>
         <Container className="main-container">
           <Table className="items-table">
-            {basket.map((item) => (
+            {basket.map((item: IItem) => (
               <tbody key={item.id}>
                 <tr key={item.id}>
                   <td>
-                    <img src={item.imgSrc} alt={123}></img>
+                    <img src={item.imgSrc} alt="123"></img>
                   </td>
-                  <td>{item.name}</td>
+                  <td>{item.type}</td>
                   <td>{item.brand}</td>
                   <td>{item.price} грн</td>
                   <td>
