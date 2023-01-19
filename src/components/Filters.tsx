@@ -4,6 +4,7 @@ import React, { useState, useContext } from 'react'
 import { IItem, IBrand, Itype, IArr } from '../models/models'
 import { useDispatch, useSelector } from "react-redux"
 import { Context } from '../App';
+import $ from 'jquery'
 
 function Filters () {
   const dispatch = useDispatch()
@@ -49,6 +50,12 @@ function Filters () {
     setTypes(types)
   }
 
+  function hideCloseButton() {
+    $('.filter').addClass('hidden')
+    $('.remove-hidden').css('display', 'block')
+    $('.close-button').addClass('hidden')
+  }
+
   
  
 
@@ -67,7 +74,12 @@ function Filters () {
                     }}
                     action
                     variant="light"
-                    onClick={filteredAllBrand}
+                    onClick={() => {
+                      filteredAllBrand()
+                      hideCloseButton()
+                      }
+                    }
+
                   >
                     ALL
                   </ListGroup.Item>
@@ -83,6 +95,7 @@ function Filters () {
                       onClick={(e) => {
                         let value: string = e.currentTarget.textContent as string;
                         filterByBrandOrType(value);
+                        hideCloseButton()
                       }}
                     >
                       {brand}
@@ -106,7 +119,11 @@ function Filters () {
                     }}
                     action
                     variant="light"
-                    onClick={filteredAllBrand}
+                    onClick={() => {
+                      filteredAllBrand()
+                      hideCloseButton()
+                    }}
+
                   >
                     ALL
                   </ListGroup.Item>
@@ -122,6 +139,7 @@ function Filters () {
                       onClick={(e) => {
                         let value: any = e.currentTarget.textContent;
                         filterByBrandOrType(value);
+                        hideCloseButton()
                       }}
                     >
                       {type}

@@ -8,7 +8,10 @@ import { Link, Outlet } from "react-router-dom";
 function Header() {
 
   function Menu() {
-    $('.nav-small-opened').removeClass('hidden')
+    $('.nav-small-opened').toggleClass('hidden')
+    $('.filter').addClass('hidden')
+    $('.remove-hidden').css('display', 'block')
+    $('.close-button').addClass('hidden')
   }
   function hideMenu() {
     if (window.outerWidth < 500) {
