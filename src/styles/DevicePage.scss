@@ -73,7 +73,26 @@
 }
 
 
-@media (max-width: 400px) {
+
+@media(max-width: 924px) {
+    .mainItemContainer .arrow {
+        font-size: 5rem;
+        left: -6rem;
+        top: 0;
+    }
+    .smalPicsContainer img {
+        width: 100px;
+    }
+}
+
+@media(max-width: 767px) {
+    .mainItemContainer .itemInfo .cardType {
+        font-size: 3rem;
+    }
+
+}
+
+@media (max-width: 600px) {
     .mainItemContainer {
         flex-direction: column;
         
