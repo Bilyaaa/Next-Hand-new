@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.36d1bfb3.css",
-    "main.js": "/static/js/main.db0b9e66.js",
+    "main.css": "/static/css/main.bfe298c2.css",
+    "main.js": "/static/js/main.a9574066.js",
     "static/media/Town.jpg": "/static/media/Town.d1308f08aca97212e5de.jpg",
     "index.html": "/index.html",
-    "main.36d1bfb3.css.map": "/static/css/main.36d1bfb3.css.map",
-    "main.db0b9e66.js.map": "/static/js/main.db0b9e66.js.map"
+    "main.bfe298c2.css.map": "/static/css/main.bfe298c2.css.map",
+    "main.a9574066.js.map": "/static/js/main.a9574066.js.map"
   },
   "entrypoints": [
-    "static/css/main.36d1bfb3.css",
-    "static/js/main.db0b9e66.js"
+    "static/css/main.bfe298c2.css",
+    "static/js/main.a9574066.js"
   ]
 }

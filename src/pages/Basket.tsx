@@ -1,6 +1,6 @@
 
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import Header from "../components/Header";
@@ -10,9 +10,22 @@ import '../styles/Basket.scss'
 
 function Basket() {
   
+  let [basket, setBasket] = useState([])
+
+  useEffect(() => {
+    if(localStorage.getItem("basket") !== null) {
+    let myBasket: [] = JSON.parse(localStorage.getItem("basket") as string)
+    console.log(myBasket)
+    setBasket(myBasket)
+  }
+  else {
+    console.log('null')
+  }
+  }, [])
+  
   
 
-  const [basket, setBasket] = useState(JSON.parse(localStorage.getItem("basket") as string))
+
   const Toast = Swal.mixin({
     toast: true,
     position: "center",
@@ -46,7 +59,7 @@ function Basket() {
 
     return <div className="summ">{sum} грн</div>;
   }
-  if (basket.length) {
+  if (basket.length > 0) {
     return (
       <>
       <Header/>
