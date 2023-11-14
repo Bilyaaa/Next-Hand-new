@@ -6,7 +6,9 @@ import ZoomImg from "../components/ZoomImg";
 import $ from 'jquery'
 import '../styles/DevicePage.scss'
 import React, { useContext } from "react";
-import { Context } from "../App";
+import { useSelector } from "react-redux";
+import { IArr, IItem } from "../models/models";
+// import { Context } from "../App";
 
 
 function DevicePage() {
@@ -14,7 +16,8 @@ function DevicePage() {
   let itemId = item.itemId
   let storedData = localStorage.getItem("basket");
   let basketItems = storedData ? JSON.parse(storedData) : [];
-  const defaultList = useContext(Context)
+  const defaultl = useSelector(state => state) as IArr
+  const defaultList = defaultl.items
 
   const Toast = Swal.mixin({
     toast: true,
@@ -70,7 +73,7 @@ function DevicePage() {
             <Card.Body style={{ padding: "1rem 0" }}>
               <Card.Title className="cardType">
                 {item.type}{" "}
-                <span>{item.brand}</span>
+                <span>{item.name}</span>
               </Card.Title>
               <Card.Text className="cardText">
                 PRICE:{" "}

@@ -4,9 +4,9 @@
 export interface IItem {
     id: number,
     type: string,
-    brand: string,
+    name: string,
     price: number,
-    imgSrc: any,
+    imgSrc: string,
     imgSrc2: any,
     imgSrc3: any,
   }
@@ -27,5 +27,5 @@ export interface Itype  {
   }
   
 export interface IBrand {
-    brand: string
+    name: string
   }

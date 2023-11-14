@@ -48,7 +48,7 @@ function Basket() {
     setBasket(filtered);
     Toast.fire({
       icon: "success",
-      title: "Товар удален из корзины",
+      title: "Item deleted from basket",
     });
   }
 
@@ -72,7 +72,7 @@ function Basket() {
                     <img src={item.imgSrc} alt="123"></img>
                   </td>
                   <td>{item.type}</td>
-                  <td>{item.brand}</td>
+                  <td>{item.name}</td>
                   <td>{item.price} грн</td>
                   <td>
                     <Button
@@ -99,7 +99,7 @@ function Basket() {
       <>
       <Header/>
       <Container className="empty-basket">
-        <div>Ваша корзина пуста</div>
+        <div>Your basket is empty</div>
       </Container>
       </>
     );

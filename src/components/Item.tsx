@@ -16,7 +16,7 @@ function Item(props: {item: IItem}) {
           <Card.Img variant="top" src={item.imgSrc}/>
           </div>
         <div className='text-container'>
-          <div className='div-brand'>{item.brand}</div>
+          <div className='div-brand'>{item.name}</div>
         <div className='div-price'>{item.price} ₴</div>
       </div>
       </Card>

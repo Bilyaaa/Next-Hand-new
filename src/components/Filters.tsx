@@ -3,21 +3,22 @@ import { Accordion, ListGroup, ListGroupItem } from 'react-bootstrap'
 import React, { useState, useContext } from 'react'
 import { IItem, IBrand, Itype, IArr } from '../models/models'
 import { useDispatch, useSelector } from "react-redux"
-import { Context } from '../App';
+// import { Context } from '../App';
 import $ from 'jquery'
 
 function Filters () {
   const dispatch = useDispatch()
   const items: IArr = useSelector(state => state) as IArr
   const myItems: IItem[] = items.items
-  const defaultList = useContext(Context)
+  // const defaultL: IArr = useSelector(state => state) as IArr
+  const defaultList: IItem[] = items.items
   const [brands, setBrands] = useState<Array<string>>([]);
   const [types, setTypes] = useState<Array<string>>([]);
   
   function brandsMap() {
     let brands: string[] = myItems.reduce((acc: string[], item: IBrand) => {
-      if (!acc.includes(item.brand)) {
-        acc.push(item.brand); 
+      if (!acc.includes(item.name)) {
+        acc.push(item.name); 
       }
       return acc;
     }, []);
@@ -26,7 +27,7 @@ function Filters () {
 
   function filterByBrandOrType(value: string) {
     let items = defaultList.filter((item: IItem) => {
-       if (item.brand === value || item.type === value) {
+       if (item.name === value || item.type === value) {
          return item 
         } 
         else return null
