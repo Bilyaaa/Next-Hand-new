@@ -1,15 +1,17 @@
 
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Card } from 'react-bootstrap'
-import '../styles/Item.scss'
-import { IItem } from '../models/models'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
+import '../styles/Item.scss';
+import { IItem } from '../models/models';
 
 
 function Item(props: {item: IItem}) {
-  let item = props.item
+  
+  let item = props.item;
+
   return (
-    <Link to={"/device/" + item.id} key={item.id} style={{ textDecoration: 'none', color: 'grey' }}>
+    <Link to={"/device/" + item.id} key={item.id}>
       <Card key={item.id}>
         <div className='div-type'>{item.type}</div>
         <div>
@@ -21,7 +23,7 @@ function Item(props: {item: IItem}) {
       </div>
       </Card>
     </Link>
-  )
-}
+  );
+};
 
-export default Item 
+export default Item;

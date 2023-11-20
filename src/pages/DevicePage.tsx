@@ -8,8 +8,6 @@ import '../styles/DevicePage.scss'
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { IArr, IItem } from "../models/models";
-// import { Context } from "../App";
-
 
 function DevicePage() {
   let item = useParams()
@@ -39,8 +37,6 @@ function DevicePage() {
       return null
     }
   });
-  console.log(myItem)
-
   return (
     <Container className="mainItemContainer" key={item.id}>
       {myItem.map((item) => (

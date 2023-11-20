@@ -1,17 +1,16 @@
 
-import { Accordion, ListGroup, ListGroupItem } from 'react-bootstrap'
-import React, { useState, useContext } from 'react'
-import { IItem, IBrand, Itype, IArr } from '../models/models'
-import { useDispatch, useSelector } from "react-redux"
-// import { Context } from '../App';
-import $ from 'jquery'
+import { Accordion, ListGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { IItem, IBrand, Itype, IArr } from '../models/models';
+import { useDispatch, useSelector } from "react-redux";
+import $ from 'jquery';
 
 function Filters () {
-  const dispatch = useDispatch()
-  const items: IArr = useSelector(state => state) as IArr
-  const myItems: IItem[] = items.items
-  // const defaultL: IArr = useSelector(state => state) as IArr
-  const defaultList: IItem[] = items.items
+
+  const dispatch = useDispatch();
+  const items: IArr = useSelector(state => state) as IArr;
+  const myItems: IItem[] = items.items;
+  const defaultList: IItem[] = items.items;
   const [brands, setBrands] = useState<Array<string>>([]);
   const [types, setTypes] = useState<Array<string>>([]);
   
@@ -23,59 +22,56 @@ function Filters () {
       return acc;
     }, []);
     setBrands(brands);  
-  }
+  };
 
   function filterByBrandOrType(value: string) {
     let items = defaultList.filter((item: IItem) => {
        if (item.name === value || item.type === value) {
-         return item 
+         return item;
         } 
-        else return null
+        else return null;
      })
-     dispatch({type: 'RENDER', payload: items})
-
-   }
+     dispatch({type: 'RENDER', payload: items});
+   };
  
    function filteredAllBrand() {
-    let items = defaultList
-    dispatch({type: 'RENDER', payload: items})
-   }
+    let items = defaultList;
+    dispatch({type: 'RENDER', payload: items});
+   };
 
   function typesMap() {
     let types: string[] = myItems.reduce((acc: any, item: Itype) => {
       if (!acc.includes(item.type)) {
         acc.push(item.type);
-      }
+      };
       return acc;
     }, []);
-    setTypes(types)
-  }
+    setTypes(types);
+  };
 
   function sortLowPrice() {
     let items = myItems.sort((a, b) => {
-      return a.price - b.price
-    })
-    console.log(myItems)
+      return a.price - b.price;
+    });
     dispatch({type: 'RENDER', payload: items})
-  }
+  };
 
   function sortHighPrice() {
     let items = myItems.sort((a, b) => {
-      return b.price - a.price
-    })
-    console.log(myItems)
-    dispatch({type: 'RENDER', payload: items})
-  }
+      return b.price - a.price;
+    });
+    dispatch({type: 'RENDER', payload: items});
+  };
   
   
 
   function hideCloseButton() {
     if (window.outerWidth < 500) {
-    $('.filter').addClass('hidden')
-    $('.remove-hidden').css('display', 'block')
-    $('.close-button').addClass('hidden')
-  }
-  }
+      $('.filter').addClass('hidden');
+      $('.remove-hidden').css('display', 'block');
+      $('.close-button').addClass('hidden');
+    };
+  };
     return (      
         <div>
           <Accordion >
@@ -95,7 +91,6 @@ function Filters () {
                       hideCloseButton()
                       }
                     }
-
                   >
                     ALL
                   </ListGroup.Item>
@@ -110,7 +105,7 @@ function Filters () {
                       variant="light"
                       onClick={(e) => {
                         let value: string = e.currentTarget.textContent as string;
-                        filterByBrandOrType(value);
+                        filterByBrandOrType(value)
                         hideCloseButton()
                       }}
                     >
@@ -139,7 +134,6 @@ function Filters () {
                       filteredAllBrand()
                       hideCloseButton()
                     }}
-
                   >
                     ALL
                   </ListGroup.Item>
@@ -186,10 +180,8 @@ function Filters () {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-        </div>
-   
+        </div>  
     )
 }
 
-
-export default Filters
+export default Filters;

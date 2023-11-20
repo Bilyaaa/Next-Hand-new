@@ -1,6 +1,7 @@
-import React from 'react'
-import '../styles/Home.scss'
-import '../styles/Media.scss'
+import React, { useState, useEffect } from 'react';
+import '../styles/Home.scss';
+import '../styles/Media.scss';
+import { useDispatch } from 'react-redux';
 import { Container, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
@@ -9,9 +10,7 @@ import { Link } from 'react-router-dom';
 
 function HomeSec1 () {
  
-  return (
-   
-    
+  return (    
     <Container className='home__container'>  
     <div className='home__container__img_container1'>
       <div className='home__container__img_container1-block1'>
@@ -19,8 +18,7 @@ function HomeSec1 () {
           <div className='home__container__img_container1-block1-text2'>
             To the site of used brand clothing
             <Link to="/shop">
-            <Button variant='outline-light'>
-              
+            <Button variant='outline-light'>             
               SHOP
             </Button></Link>
           </div>
@@ -30,8 +28,8 @@ function HomeSec1 () {
       <img src='/img/city.jpg' alt='city'/>
     </div>
   </Container>
-  )
-}
+  );
+};
 
 function HomeSec2 () {
   return (
@@ -40,11 +38,10 @@ function HomeSec2 () {
         <Link to="/shop">WE MAKE STYLE</Link>
       </div>     
     </Container>
-  )
-}
+  );
+};
 
 function HomeSec3 (props: { src: string; alt: string; label: string }) {
-
   return (
     <Container className='home__container3'>
       <div className='home__container3__img'>
@@ -58,31 +55,45 @@ function HomeSec3 (props: { src: string; alt: string; label: string }) {
             <Button variant='outline-light'>
               SHOP
             </Button></Link>
-          </div> 
-          
-        </div>
-     
-      </div> 
-        
-        
+          </div>          
+        </div>     
+      </div>         
     </Container>
-  )
-}
+  );
+};
 
 
 
-function Home() {
+function Home () {
+
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => { 
+    setIsLoading(true);
+    fetch('http://localhost:3000/items')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Запрос на все файлы:', data);
+        dispatch({ type: 'RENDER', payload: data });
+        setIsLoading(false); 
+      })
+      .catch((error) => {
+        console.error('Ошибка получения данных FETCH:', error);
+        setIsLoading(false);       
+      });
+    }, []  
+  );
+
   return (
   <>  
- <HomeSec1/>
- <HomeSec2/>
- <HomeSec3 label='WEMEN' src='/img/Wclothing.jpg' alt='wclothing'/>
- <HomeSec2/>
- <HomeSec3 label='KIDS' src='/img/Girl.jpeg' alt='kids'/>
- </>   
-  
-    
+    <HomeSec1/>
+    <HomeSec2/>
+    <HomeSec3 label='WEMEN' src='/img/Wclothing.jpg' alt='wclothing'/>
+    <HomeSec2/>
+    <HomeSec3 label='KIDS' src='/img/Girl.jpeg' alt='kids'/>
+  </>      
   );
-}
+};
 
 export default Home;

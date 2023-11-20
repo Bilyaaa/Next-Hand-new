@@ -1,82 +1,101 @@
 
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
-import '../styles/Admin.scss'
-import { useEffect, useState, useContext } from 'react';
-import { useSelector } from 'react-redux';
-import React from 'react';
-import { IArr, IItem } from '../models/models';
-// import { Context } from '../App';
+import { useSelector, useDispatch } from 'react-redux';
+import { IItem, IArr } from '../models/models';
+import AddForm from '../components/AddForm';
+import '../styles/Admin.scss';
 
 
 
 
 function Admin() {
 
+  const button = useRef<HTMLButtonElement>(null);
+  const dispatch = useDispatch();
+
   const admin = {
     login: '123',
     password: '111'
-  }
+  };
 
-  let userLogin: string 
-  let userPassword: string
-  let inputsContainer: HTMLDivElement
-  let listContainer : HTMLDivElement
-
-  // const [defaultList, setDefaultList]: any = useState([])
-  // const [isLoading, setIsLoading] = useState(false)
-
-  // function getData () {
-  //   setIsLoading(true);
-  //   fetch('http://localhost:3000/items')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log('Данные с сервера клиент:', data);
-  //       setDefaultList(data);
-  //       setIsLoading(false); 
-  //     })
-  //     .catch((error) => {
-  //       console.error('Ошибка получения данных клиент:', error);
-  //       setIsLoading(false); 
-  //     });
-  // }
-
-
-  useEffect(() => { inputsContainer = document.querySelector('.auth-inputs__container') as HTMLDivElement
-   listContainer = document.querySelector('.list__container') as HTMLDivElement},[])
+  let userLogin: string;
+  let userPassword: string;
  
-   const defaultList: IItem[] = useSelector(state => state) as IItem[]
+  let itemsArr: any = useSelector(state => state);
+  let [items, setItems] = useState(itemsArr.items);      
+
 
   function getLoginAndPassword (event: React.ChangeEvent<HTMLInputElement>) {
-    let loginInput: HTMLInputElement = document.querySelector('.login-input') as HTMLInputElement
-    if(event.currentTarget === loginInput) {
-      userLogin = event.currentTarget.value
+    if(event.currentTarget === document.querySelector('.login-input')) {
+      userLogin = event.currentTarget.value;
     }
     else {
-      userPassword = event.currentTarget.value
-    }
-  }
+      userPassword = event.currentTarget.value;
+    };
+  };
+
   function submit () {
-    if (userLogin === admin.login && userPassword === admin.password) {   
-      
-      inputsContainer.classList.add('hidden')
-      listContainer.classList.remove('hidden')  
-      // getData()    
-    }
-    else {
-      alert()
-    }   
-  }
+    if (userLogin === admin.login && userPassword === admin.password) {    
+      document.querySelector('.auth-inputs__container')?.classList.add('hidden');
+      document.querySelector('.list__container')?.classList.remove('hidden');
+      getData();
+    } else {
+      alert();
+    }; 
+  };
+
   function removeAlert () {
-    let wrongAlert: HTMLDivElement = document.querySelector('.wrong-alert') as HTMLDivElement
-    wrongAlert.classList.add('hidden')       
-  }
+    document.querySelector('.wrong-alert')?.classList.add('hidden');  
+  };
+
   function alert () {
-    let wrongAlert: HTMLDivElement = document.querySelector('.wrong-alert') as HTMLDivElement
-    wrongAlert.classList.remove('hidden')
+    document.querySelector('.wrong-alert')?.classList.remove('hidden');
+  };
+
+  function showAddForm () {
+    document.querySelector('.add-form-container')?.classList.remove('hidden');
+    document.querySelector('.add-btn')?.classList.add('hidden');
+  };
+
+  function removeItem (id: number) {
+    fetch(`http://localhost:3000/items/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        } else {
+          getData()
+        }
+      })
+      .then(data => {
+        console.log("Товар удален!");
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
+  function getData () { 
+    fetch('http://localhost:3000/items')
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: 'RENDER', payload: data });
+        setItems(data);
+      })
+      .catch((error) => {
+        console.error('Ошибка получения данных FETCH:', error);    
+      });
   }
+  
 
   return (
     <>
+      <AddForm></AddForm>    
       <div>
         <div className="auth-inputs__container">
             <input className="login-input" type='text' placeholder="login" onClick={removeAlert} onChange={getLoginAndPassword}></input>
@@ -85,8 +104,9 @@ function Admin() {
             <div className='wrong-alert hidden'>Wrong Login or password</div>
         </div>
         <Container className='list__container hidden'>
+          <Button variant='success' className='add-btn' ref={button} onClick={showAddForm}>+ Add</Button>      
           <Table className='list-table'>
-            {defaultList.map((item: any) => (
+            {items.map((item: any) => (
               <tbody key={item.id}>
                 <tr
                   key={item.id}>
@@ -96,7 +116,7 @@ function Admin() {
                   <td>{item.type}</td>
                   <td>{item.name}</td>
                   <td>{item.price} грн</td>
-                  <td><Button variant='outline-danger'>remove</Button></td>
+                  <td><Button onClick={() => removeItem(item.id)} variant='outline-danger'>remove</Button></td>
                   <td></td>
                 </tr>
               </tbody>

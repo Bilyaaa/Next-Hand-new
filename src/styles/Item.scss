@@ -1,7 +1,9 @@
+a {
+    text-decoration: none;
+    color: grey;
+}
 
-
-.card {
-   
+.card {   
     position: relative;
     margin: 20px;
 
@@ -31,7 +33,6 @@
     .div-brand {
         text-transform: uppercase;
     }
-
     .div-price{
         background-color: #424242;
         margin: 1rem .5rem 1rem 0;
@@ -46,7 +47,6 @@
 @media (max-width: 500px) {
     .card {
         width: 90%;
-
         .div-price {
             padding: 0 1rem;
         }
